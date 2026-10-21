@@ -1,138 +1,227 @@
-# 🚀 Enterprise LLM Gateway & AI Governance Platform
+# ⚡ RouteForge: Enterprise LLM Gateway & AI Governance Engine
 
-An end-to-end, high-performance **Enterprise LLM Gateway** built with FastAPI, PostgreSQL, Redis, and SQLAlchemy 2.0. The platform unifies multi-provider routing (Gemini, OpenAI, Groq, DeepSeek), smart semantic prompt caching, real-time observability tracing, AI guardrails with PII masking, prompt versioning with A/B testing, and scientific model evaluation benchmarks with P50/P95 latency percentiles.
+<p align="center">
+  <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Python_3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
+</p>
+
+**RouteForge** is a production-ready, high-performance **Unified LLM Gateway and AI Governance Platform** built with **FastAPI**, **PostgreSQL (pgvector)**, and **Redis**.
+
+It solves the operational challenges of using LLMs in production: single-provider lock-in, unexpected downtime, runaway API costs, prompt injection attacks, sensitive PII leaks, and lack of real-time visibility.
 
 ---
 
-## 🌟 Key Architecture & Features
+## 🚀 Key Highlights & Architecture
 
 ```text
-                               ┌───────────────────────────────────┐
-                               │       Client / App Request        │
-                               └─────────────────┬─────────────────┘
-                                                 │
-                                                 ▼
-                               ┌───────────────────────────────────┐
-                               │      FastAPI Gateway Engine       │
-                               └─────────────────┬─────────────────┘
-                                                 │
-            ┌──────────────────────┬─────────────┴────────────┬──────────────────────┐
-            ▼                      ▼                          ▼                      ▼
-  ┌───────────────────┐  ┌───────────────────┐      ┌───────────────────┐  ┌───────────────────┐
-  │   Guardrails &    │  │  Semantic Caching │      │  Rate Limiter &   │  │   Prompt Registry │
-  │   PII Masking     │  │  (Redis / Vector) │      │  Quota Enforcer   │  │   & A/B Testing   │
-  └─────────┬─────────┘  └─────────┬─────────┘      └─────────┬─────────┘  └─────────┬─────────┘
-            │                      │                          │                      │
-            └──────────────────────┴─────────────┬────────────┴──────────────────────┘
-                                                 │
-                                                 ▼
-                               ┌───────────────────────────────────┐
-                               │   Dynamic Failover & Router Engine│
-                               └─────────────────┬─────────────────┘
-                                                 │
-            ┌──────────────────────┬─────────────┴────────────┬──────────────────────┐
-            ▼                      ▼                          ▼                      ▼
-     ┌─────────────┐        ┌─────────────┐            ┌─────────────┐        ┌─────────────┐
-     │   Gemini    │        │   OpenAI    │            │    Groq     │        │  DeepSeek   │
-     └─────────────┘        └─────────────┘            └─────────────┘        └─────────────┘
-                                                 │
-                                                 ▼
-                               ┌───────────────────────────────────┐
-                               │ Phase 6 Observability & Benchmarks│
-                               └───────────────────────────────────┘
+                               ┌────────────────────────────────────────┐
+                               │           Client / App Request         │
+                               └───────────────────┬────────────────────┘
+                                                   │
+                                                   ▼
+                               ┌────────────────────────────────────────┐
+                               │       RouteForge Gateway Engine        │
+                               └───────────────────┬────────────────────┘
+                                                   │
+             ┌──────────────────────┬──────────────┴─────────────┬──────────────────────┐
+             ▼                      ▼                            ▼                      ▼
+   ┌───────────────────┐  ┌───────────────────┐        ┌───────────────────┐  ┌───────────────────┐
+   │   Guardrails &    │  │  Semantic Caching │        │  Rate Limiter &   │  │  Prompt Registry  │
+   │   PII Masking     │  │  (Redis / Vector) │        │  Tier Quotas      │  │  & A/B Testing    │
+   └─────────┬─────────┘  └─────────┬─────────┘        └─────────┬─────────┘  └─────────┬─────────┘
+             │                      │                            │                      │
+             └──────────────────────┴──────────────┬─────────────┴──────────────────────┘
+                                                   │
+                                                   ▼
+                               ┌────────────────────────────────────────┐
+                               │    Dynamic Failover & Routing Engine   │
+                               └───────────────────┬────────────────────┘
+                                                   │
+             ┌──────────────────────┬──────────────┴─────────────┬──────────────────────┐
+             ▼                      ▼                            ▼                      ▼
+      ┌─────────────┐        ┌─────────────┐              ┌─────────────┐        ┌─────────────┐
+      │   Gemini    │        │   OpenAI    │              │    Groq     │        │  DeepSeek   │
+      └─────────────┘        └─────────────┘              └─────────────┘        └─────────────┘
+                                                   │
+                                                   ▼
+                               ┌────────────────────────────────────────┐
+                               │ Observability, Traces & Benchmarking   │
+                               └────────────────────────────────────────┘
 ```
 
-### Complete Phase Capability Matrix:
-1. **Phase 1 — Authentication & Security**: Secure JWT user management, bcrypt password hashing, token refreshes, and tenant isolation.
-2. **Phase 2 — API Key Management**: Tenant-scoped API key generation (`gw_live_...`), revocation, usage tracking, and automated expiration policies.
-3. **Phase 3 — Multi-Provider Gateway**: Standardized unified OpenAI-compatible payload structure with failover routing between Gemini, OpenAI, Groq, and DeepSeek.
-4. **Phase 4 — Rate Limiting & Tiered Quotas**: Configurable plan quotas (`free`, `pro`, `enterprise`), sliding window rate limiting, token & request spend tracking.
-5. **Phase 5 — Dynamic Health & Circuit Breaker**: Continuous health checks, error threshold detection, latency tracking, and automatic provider failover routing.
-6. **Phase 6 — Observability & Tracing**: End-to-end request lifecycle logging, stage timing breakdowns (`trace_xxxx`), failover attempt histories, and optional Langfuse tracing integration.
-7. **Phase 7 — Exact & Semantic Prompt Caching**: High-performance exact match and cosine vector similarity semantic caching backed by Redis (with memory fallback) to cut API cost and latency by up to 90%.
-8. **Phase 8 — AI Guardrails & Content Moderation**: Regex PII redaction (email, SSN, credit cards, API keys), prompt injection detection, input/output size validation, and dry-run audit logs.
-9. **Phase 9 — Prompt Registry, Versioning & Evaluation**: Git-like prompt template management, variable schema validation preview, A/B experiment routing, and LLM-as-a-Judge quality scoring.
-10. **Phase 10 — Model Evaluation & Benchmarking Platform**: Automated multi-trial model comparison matrix calculating P50 (median) latency, P95 latency, standard deviation, throughput ($tokens/sec$), and multi-dimensional model leaderboards.
+---
+
+## 🛡️ Core Capabilities
+
+### 1. 🔄 Multi-Provider Unified Routing & Auto-Failover
+- Drop-in OpenAI-compatible request payload structure.
+- Seamlessly routes across **Google Gemini**, **OpenAI**, **Groq**, and **DeepSeek**.
+- Automatic circuit breaker: detects provider errors or high latency and immediately switches to secondary fallback providers with zero client interruption.
+
+### 2. 🔒 AI Safety Guardrails & PII Redaction
+- **PII Detection & Masking**: Real-time redaction of Emails, Phone Numbers, Social Security Numbers (SSN), Credit Cards, and API Keys before they hit LLM servers.
+- **Prompt Injection & Jailbreak Defense**: Detects adversarial prompts (`ignore previous instructions`, `DAN mode`, `bypass safety filters`) and enforces configurable block/warn actions.
+- **Developer Safety Sandbox**: Interactive console in the UI to dry-run prompts against governance policies.
+
+### 3. ⚡ Smart Semantic & Exact Prompt Caching
+- **Exact Match Caching**: Delivers sub-millisecond responses for repeated queries.
+- **Semantic Caching with Vector Embeddings**: Cosine similarity matching (`>= 0.90`) to recognize semantically identical queries and reuse responses, cutting external API costs by up to 90%.
+- Backed by **Redis** with automatic in-memory fallback.
+
+### 4. 📊 Observability, Tracing & Cost Analytics
+- Real-time latency tracking, stage-by-stage timing breakdowns (`trace_xxxx`), and failover logs.
+- Token consumption and cost calculation per request, model, and tenant.
+- Native integration with **Langfuse** tracing.
+
+### 5. 🧪 Prompt Registry, Versioning & Evaluation
+- Git-like prompt template versioning (`v1`, `v2`, `staging`, `production`).
+- Variable injection and schema validation.
+- Live A/B testing experiment traffic splitting.
+- Built-in **LLM-as-a-Judge** scoring mechanism for output quality evaluation.
+
+### 6. 🏆 Scientific Model Benchmarking Platform
+- Side-by-side multi-trial benchmark execution.
+- Computes **P50 (Median)** latency, **P95** latency, standard deviation, and throughput ($tokens/sec$).
+- Dynamic model leaderboard to compare models across cost, speed, and reliability.
+
+### 7. 🔑 Multi-Tenant API Key Management & Rate Limiting
+- Tenant-scoped API key generation (`gw_live_...`) with automatic hashing.
+- Sliding window rate limiting and tiered monthly quota enforcement (`free`, `pro`, `enterprise`).
 
 ---
 
-## 🛠️ Local Development & Quickstart
+## 💻 Tech Stack
 
-### Option A: Local Python Environment
-
-1. **Clone and setup virtual environment**:
-   ```powershell
-   python -m venv venv
-   .\venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-
-2. **Configure environment variables**:
-   Copy `.env.example` to `.env` and fill in your database URL and API keys:
-   ```powershell
-   cp .env.example .env
-   ```
-
-3. **Initialize Database**:
-   ```powershell
-   python init_db.py
-   ```
-
-4. **Start Application Server**:
-   ```powershell
-   python -m uvicorn app.main:app --host 127.0.0.1 --port 9000 --reload
-   ```
-   Open your browser at `http://127.0.0.1:9000` to access the SPA Management Dashboard!
+- **Framework**: FastAPI (Python 3.11)
+- **ASGI Server**: Uvicorn
+- **Database & ORM**: PostgreSQL, `pgvector`, SQLAlchemy 2.0 (async), AsyncPG, Alembic
+- **Caching**: Redis (with built-in local memory fallback)
+- **Security**: JWT (`python-jose`), Passlib (`bcrypt`)
+- **LLM SDKs**: Google GenAI (`google-genai`), OpenAI SDK, Groq, DeepSeek
+- **Dashboard UI**: Modern dark-mode SPA built with vanilla HTML5, CSS3 glassmorphism, and JavaScript (zero build step required)
+- **Containerization**: Docker & Docker Compose
 
 ---
 
-### Option B: Docker Compose (Full Stack)
+## 🛠️ Quickstart (Run Locally)
 
-Run PostgreSQL, Redis, PgAdmin, and FastAPI Gateway together with one command:
+### Prerequisites
+- Python 3.11+
+- PostgreSQL (or use Docker)
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Sidra51/RouteForge.git
+cd RouteForge
+```
+
+### 2. Set up virtual environment
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Configure Environment Variables
+Copy `.env.example` to `.env`:
+```powershell
+cp .env.example .env
+```
+Fill in your database URL and provider API keys in `.env`:
+```env
+DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/llm_gateway
+JWT_SECRET_KEY=your_generated_secret_key
+GEMINI_API_KEY=your_gemini_key
+OPENAI_API_KEY=your_openai_key
+GROQ_API_KEY=your_groq_key
+```
+
+### 4. Initialize Database
+```powershell
+python init_db.py
+```
+
+### 5. Run the Application
+```powershell
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Open your browser:
+* **Interactive UI Dashboard**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+* **Swagger API Documentation**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+* **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
+---
+
+## 🐳 Run with Docker Compose
+
+Run the entire stack (FastAPI Gateway, PostgreSQL with pgvector, Redis, and PgAdmin) with one command:
 
 ```bash
 docker-compose up --build -d
 ```
-Access points:
-- **LLM Gateway Dashboard**: `http://localhost:8000`
-- **PgAdmin Dashboard**: `http://localhost:5050` (Login: `admin@gateway.local` / `admin`)
+
+- **Gateway & Dashboard**: `http://localhost:8000`
+- **PgAdmin Database Manager**: `http://localhost:5050` (`admin@gateway.local` / `admin`)
 
 ---
 
-## 🚀 Free Cloud Deployment Roadmap
+## 📡 API Usage Example
 
-To deploy this project to production for free, follow this step-by-step architecture:
+Send completions via standard OpenAI-compatible format through the RouteForge Gateway:
 
-### 1. Hosted PostgreSQL (Free Tier)
-- **Supabase** or **Neon.tech**: Free managed PostgreSQL database with `pgvector` support.
-- Set `DATABASE_URL=postgresql+asyncpg://<user>:<password>@<host>:5432/<dbname>`
+```python
+import openai
 
-### 2. Hosted Redis (Free Tier)
-- **Upstash Redis**: Free serverless Redis instance.
-- Set `REDIS_URL=rediss://default:<password>@<host>:6379/0`
+client = openai.OpenAI(
+    base_url="http://127.0.0.1:8000/api/v1/gateway",
+    api_key="gw_live_your_gateway_key_here"
+)
 
-### 3. FastAPI Gateway Deployment
-- **Koyeb** or **Render**: Deploy the included `Dockerfile` directly from your GitHub repository.
-- Configure Environment Variables (`DATABASE_URL`, `REDIS_URL`, `JWT_SECRET_KEY`, `GEMINI_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`, `DEEPSEEK_API_KEY`).
+response = client.chat.completions.create(
+    model="gemini-2.0-flash", # or "gpt-4o", "deepseek-chat", "llama3-70b-8192"
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Explain quantum computing in two sentences."}
+    ]
+)
+
+print(response.choices[0].message.content)
+```
 
 ---
 
-## 🧪 Test Suite Execution
+## 🧪 Testing
 
-Run automated integration test suites across phases:
+Execute test suites for each phase:
 
 ```powershell
-# Phase 8: Guardrails & Content Moderation
+# Test Guardrails & PII redaction
 python tests/test_guardrails.py
 
-# Phase 9: Prompt Registry & Evaluation
+# Test Prompt Registry & A/B testing
 python tests/test_prompt_registry.py
 
-# Phase 10: Scientific Model Benchmarking
+# Test Model Benchmarking engine
 python tests/test_benchmarking.py
 ```
 
 ---
 
+## 🌐 Free Cloud Deployment
+
+| Component | Recommended Platform | Guide |
+| :--- | :--- | :--- |
+| **Gateway Service** | **Render.com** / **Koyeb** | Connect this GitHub repo and deploy using Dockerfile |
+| **PostgreSQL Database** | **Neon.tech** | Free serverless PostgreSQL (supports `postgresql+asyncpg://`) |
+| **Redis Cache** | **Upstash.com** | Free serverless Redis (or rely on built-in in-memory fallback) |
+
+---
+
 ## 📄 License
-MIT License. Built with ❤️ for scalable AI engineering.
+
+This project is licensed under the MIT License.
