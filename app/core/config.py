@@ -73,6 +73,6 @@ PROVIDER_METADATA = {
     "groq": {
         "quality_rank": 4,
         "speed_rank": 1,
-        "default_model": "llama-3.1-8b-instant"
+        "default_model": "qwen/qwen3.8-27b"
     }
 }

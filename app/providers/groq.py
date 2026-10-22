@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class GroqProvider(BaseProvider):
     @classmethod
     def get_supported_models(cls) -> List[str]:
-        return ["llama-3.1-8b-instant", "llama-3.3-70b-versatile", "llama-3.1-70b-versatile"]
+        return ["qwen/qwen3.8-27b", "openai/gpt-oss-20b", "allam-2-7b"]
 
     async def generate_chat(
         self,

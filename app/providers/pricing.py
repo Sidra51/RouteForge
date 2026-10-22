@@ -55,6 +55,18 @@ MODEL_PRICING = {
     },
 
     # --- Groq Models ---
+    "qwen/qwen3.8-27b": {
+        "input": 0.20 / 1_000_000,
+        "output": 0.30 / 1_000_000,
+    },
+    "openai/gpt-oss-20b": {
+        "input": 0.20 / 1_000_000,
+        "output": 0.30 / 1_000_000,
+    },
+    "allam-2-7b": {
+        "input": 0.10 / 1_000_000,
+        "output": 0.15 / 1_000_000,
+    },
     "llama-3.1-8b-instant": {
         "input": 0.05 / 1_000_000,
         "output": 0.08 / 1_000_000,
