@@ -2224,4 +2224,64 @@ input::placeholder, textarea::placeholder {
     opacity: 0.9 !important;
 }
 
+/* Prompt Sub-Tabs styling */
+.prompt-inner-tab-btn {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #cbd5e1 !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 1rem !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.prompt-inner-tab-btn:hover {
+    background: rgba(45, 55, 75, 0.8) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.prompt-inner-tab-btn.active {
+    background: rgba(124, 58, 237, 0.2) !important;
+    border-color: #7c3aed !important;
+    color: #a78bfa !important;
+}
+
+/* A/B Experiment variant select dark dropdown */
+.variant-ver-select {
+    background: #090d16 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 0.65rem 0.9rem !important;
+    font-family: inherit !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    outline: none !important;
+    width: 100% !important;
+}
+
+.variant-ver-select option {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    padding: 8px !important;
+}
+
+.variant-weight-item {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
 

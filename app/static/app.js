@@ -2344,8 +2344,12 @@ function initPromptEventListeners() {
             }
 
             // Perform specific load updates
-            if (targetSubTab === 'eval' && state.selectedPrompt) {
+            if (targetSubTab === 'experiment') {
+                updatePromptExperimentUI();
+            } else if (targetSubTab === 'eval' && state.selectedPrompt) {
                 fetchPromptEvalMetrics(state.selectedPrompt.id);
+            } else if (targetSubTab === 'sandbox') {
+                updatePromptSandboxPlaygroundUI();
             }
         });
     });
@@ -2782,20 +2786,20 @@ function updatePromptExperimentUI() {
         const weightVal = currentVariant.weight !== undefined ? Math.round(currentVariant.weight * 100) : defaultWeight;
 
         let optionsHtml = state.selectedPromptVersions.map(v => 
-            `<option value="${v.id}" ${chosenVersionId === v.id || (!chosenVersionId && i === 0 && v.is_active) ? 'selected' : ''}>${v.version}</option>`
+            `<option value="${v.id}" style="background: #090d16; color: #f8fafc;" ${chosenVersionId === v.id || (!chosenVersionId && i === 0 && v.is_active) ? 'selected' : ''}>${v.version}</option>`
         ).join('');
 
         item.innerHTML = `
             <div>
-                <select class="variant-ver-select" style="width:100%;">
+                <select class="variant-ver-select" style="width: 100% !important; background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 6px !important; padding: 0.6rem 0.85rem !important; font-size: 0.9rem !important; cursor: pointer; outline: none;">
                     ${optionsHtml}
                 </select>
             </div>
-            <div>
-                <input type="range" class="variant-weight-range" min="0" max="100" value="${weightVal}">
+            <div style="display: flex; align-items: center;">
+                <input type="range" class="variant-weight-range" min="0" max="100" value="${weightVal}" style="width: 100%; accent-color: #7c3aed; cursor: pointer;">
             </div>
-            <div>
-                <span class="weight-display-val">${weightVal}%</span>
+            <div style="min-width: 48px; text-align: right;">
+                <span class="weight-display-val" style="font-weight: 600; color: #a78bfa;">${weightVal}%</span>
             </div>
         `;
 

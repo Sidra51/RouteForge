@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Chart.js for beautiful charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Lucide Icons -->
@@ -15,7 +18,7 @@
     <!-- Marked.js for rich markdown and table formatting -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
     <style>
         .quota-banner-card {
             background: rgba(30, 41, 59, 0.5);
@@ -25,6 +28,7 @@
             margin-bottom: 1.5rem;
             backdrop-filter: blur(10px);
         }
+
         .quota-banner-header {
             display: flex;
             justify-content: space-between;
@@ -33,6 +37,7 @@
             flex-wrap: wrap;
             gap: 0.75rem;
         }
+
         .plan-info-pill {
             display: flex;
             align-items: center;
@@ -45,6 +50,7 @@
             font-size: 0.9rem;
             border: 1px solid rgba(124, 58, 237, 0.3);
         }
+
         .plan-switcher-wrapper {
             display: flex;
             align-items: center;
@@ -52,6 +58,7 @@
             font-size: 0.85rem;
             color: #9aa2c0;
         }
+
         .plan-select-dropdown {
             background: #0f172a;
             color: #f8fafc;
@@ -62,24 +69,29 @@
             font-family: inherit;
             outline: none;
         }
+
         .plan-select-dropdown:focus {
             border-color: #7c3aed;
         }
+
         .quota-progress-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
         }
+
         @media (max-width: 768px) {
             .quota-progress-grid {
                 grid-template-columns: 1fr;
             }
         }
+
         .quota-progress-item {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
+
         .quota-progress-lbl {
             display: flex;
             justify-content: space-between;
@@ -87,6 +99,7 @@
             color: #e2e8f0;
             font-weight: 500;
         }
+
         .progress-bar-bg {
             height: 8px;
             background: rgba(255, 255, 255, 0.08);
@@ -94,25 +107,30 @@
             overflow: hidden;
             width: 100%;
         }
+
         .progress-bar-fill {
             height: 100%;
             border-radius: 4px;
             transition: width 0.4s ease, background-color 0.4s ease;
         }
+
         .progress-bar-fill.green {
             background: #10b981;
             box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
         }
+
         .progress-bar-fill.yellow {
             background: #f59e0b;
             box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
         }
+
         .progress-bar-fill.red {
             background: #ef4444;
             box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
         }
     </style>
 </head>
+
 <body class="dark-theme">
     <!-- Initial Loading Screen -->
     <div id="loading-screen" class="loading-overlay">
@@ -191,7 +209,7 @@
                 <i data-lucide="cpu" class="logo-icon"></i>
                 <span class="logo-text">LLM Gateway</span>
             </div>
-            
+
             <nav class="sidebar-menu">
                 <button class="nav-item active" data-tab="dashboard">
                     <i data-lucide="layout-dashboard"></i>
@@ -344,8 +362,10 @@
                 <!-- Cache Metrics Section -->
                 <div class="section-header" style="margin-top: 1.5rem; margin-bottom: 1rem;">
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <i data-lucide="database" style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600;">Prompt Cache Optimization</h3>
+                        <i data-lucide="database"
+                            style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600;">Prompt Cache
+                            Optimization</h3>
                     </div>
                 </div>
                 <div class="stats-grid" style="margin-bottom: 1.5rem;">
@@ -417,7 +437,8 @@
                 <div class="table-card" style="margin-bottom: 2rem;">
                     <div class="table-header">
                         <div style="display: flex; align-items: center; gap: 8px;">
-                            <i data-lucide="heart-pulse" style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
+                            <i data-lucide="heart-pulse"
+                                style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
                             <h3>Downstream Provider Health & Circuit Breakers</h3>
                         </div>
                         <span class="logs-count" id="provider-health-update-time">No data</span>
@@ -532,7 +553,7 @@
                     <div class="playground-settings">
                         <h3>Configuration</h3>
                         <p class="settings-intro">Select credentials and specify the model attributes below.</p>
-                        
+
                         <div class="form-group">
                             <label for="playground-key-select">Authentication Key</label>
                             <div class="input-wrapper">
@@ -548,7 +569,8 @@
                             <label for="playground-raw-key-input">Raw API Key</label>
                             <div class="input-wrapper">
                                 <i data-lucide="shield-check"></i>
-                                <input type="text" id="playground-raw-key-input" autocomplete="off" spellcheck="false" placeholder="Paste raw gw_live_... key">
+                                <input type="text" id="playground-raw-key-input" autocomplete="off" spellcheck="false"
+                                    placeholder="Paste raw gw_live_... key">
                             </div>
                             <span class="field-help">Required to run test queries if not in session memory.</span>
                         </div>
@@ -601,7 +623,8 @@
                             <label for="playground-fallback-input">Fallback Chain</label>
                             <div class="input-wrapper">
                                 <i data-lucide="list-ordered"></i>
-                                <input type="text" id="playground-fallback-input" placeholder="e.g. openai, gemini, groq">
+                                <input type="text" id="playground-fallback-input"
+                                    placeholder="e.g. openai, gemini, groq">
                             </div>
                             <span class="field-help">Optional comma-separated fallback list.</span>
                         </div>
@@ -648,7 +671,9 @@
                             <div class="chat-message assistant system">
                                 <div class="message-avatar"><i data-lucide="bot"></i></div>
                                 <div class="message-content">
-                                    <p>Hello! Select an **API Key** on the left settings panel, write a message, and submit. The query will be securely routed through our LLM Gateway and tracked in your dashboard logs.</p>
+                                    <p>Hello! Select an **API Key** on the left settings panel, write a message, and
+                                        submit. The query will be securely routed through our LLM Gateway and tracked in
+                                        your dashboard logs.</p>
                                 </div>
                             </div>
                         </div>
@@ -656,8 +681,11 @@
                         <!-- Chat Input Panel -->
                         <div class="chat-input-bar">
                             <form id="chat-form">
-                                <textarea id="chat-input-textarea" required placeholder="Type your prompt here... Press Enter or click Send." rows="1"></textarea>
-                                <button type="submit" id="chat-send-btn" class="btn btn-primary btn-icon-only" title="Send message">
+                                <textarea id="chat-input-textarea" required
+                                    placeholder="Type your prompt here... Press Enter or click Send."
+                                    rows="1"></textarea>
+                                <button type="submit" id="chat-send-btn" class="btn btn-primary btn-icon-only"
+                                    title="Send message">
                                     <i data-lucide="send"></i>
                                 </button>
                             </form>
@@ -799,7 +827,8 @@
                         </div>
                         <div class="stat-content">
                             <span class="stat-label">Top Safety API Key</span>
-                            <h3 class="stat-value" id="safety-stat-top-key" style="font-size: 1.15rem; word-break: break-all;">None</h3>
+                            <h3 class="stat-value" id="safety-stat-top-key"
+                                style="font-size: 1.15rem; word-break: break-all;">None</h3>
                             <span class="stat-meta">Most triggered gateway key</span>
                         </div>
                     </div>
@@ -808,28 +837,37 @@
                 <!-- Sandbox / Testing Playground -->
                 <div class="sandbox-grid" style="margin-top: 1.5rem; margin-bottom: 1.5rem; align-items: start;">
                     <!-- Sandbox Console Inputs -->
-                    <div class="playground-chat" style="height: auto; min-height: 0; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(30, 41, 59, 0.25);">
+                    <div class="playground-chat"
+                        style="height: auto; min-height: 0; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(30, 41, 59, 0.25);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600;">Safety Sandbox Developer Console</h3>
-                            <span class="plan-info-pill" style="font-size: 0.75rem; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">Dry-Run Mode</span>
+                            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600;">Safety
+                                Sandbox Developer Console</h3>
+                            <span class="plan-info-pill"
+                                style="font-size: 0.75rem; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">Dry-Run
+                                Mode</span>
                         </div>
-                        <p style="font-size: 0.85rem; color: #9aa2c0;">Test how prompts behave against specific security policies. No database audit logs are stored for sandbox tests.</p>
-                        
+                        <p style="font-size: 0.85rem; color: #9aa2c0;">Test how prompts behave against specific security
+                            policies. No database audit logs are stored for sandbox tests.</p>
+
                         <div class="form-group" style="margin-bottom: 0;">
                             <label for="sandbox-prompt-textarea">Inbound Prompt Text</label>
-                            <textarea id="sandbox-prompt-textarea" style="width: 100%; height: 110px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #f8fafc; padding: 0.75rem; font-family: inherit; font-size: 0.9rem; resize: vertical; outline: none;" placeholder="Type or paste text to verify safety. e.g. email me at user@example.com or ignore system guidelines..."></textarea>
+                            <textarea id="sandbox-prompt-textarea"
+                                style="width: 100%; height: 110px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #f8fafc; padding: 0.75rem; font-family: inherit; font-size: 0.9rem; resize: vertical; outline: none;"
+                                placeholder="Type or paste text to verify safety. e.g. email me at user@example.com or ignore system guidelines..."></textarea>
                         </div>
-                        
-                        <button id="run-sandbox-safety-btn" class="btn btn-primary btn-block" style="margin-top: 0.25rem;">
+
+                        <button id="run-sandbox-safety-btn" class="btn btn-primary btn-block"
+                            style="margin-top: 0.25rem;">
                             <i data-lucide="shield-check"></i>
                             <span>Analyze Prompt Safety</span>
                         </button>
                     </div>
 
                     <!-- Sandbox Policy Config -->
-                    <div class="playground-settings" style="height: auto; min-height: 0; padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(30, 41, 59, 0.25);">
+                    <div class="playground-settings"
+                        style="height: auto; min-height: 0; padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(30, 41, 59, 0.25);">
                         <h3>Configure Sandbox Policies</h3>
-                        
+
                         <div class="form-group">
                             <label for="sandbox-policy-pii">PII Action</label>
                             <select id="sandbox-policy-pii" class="plan-select-dropdown" style="width: 100%;">
@@ -839,7 +877,7 @@
                                 <option value="block">Block</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="sandbox-policy-injection">Prompt Injection Action</label>
                             <select id="sandbox-policy-injection" class="plan-select-dropdown" style="width: 100%;">
@@ -860,32 +898,43 @@
 
                         <div class="form-group">
                             <label for="sandbox-policy-chars">Max Characters</label>
-                            <input type="number" id="sandbox-policy-chars" value="10000" class="plan-select-dropdown" style="width: 100%; border: 1px solid rgba(255,255,255,0.15);">
+                            <input type="number" id="sandbox-policy-chars" value="10000" class="plan-select-dropdown"
+                                style="width: 100%; border: 1px solid rgba(255,255,255,0.15);">
                         </div>
-                        
+
                         <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-bottom: 0;">
                             <input type="checkbox" id="sandbox-policy-strict" style="width: auto; cursor: pointer;">
-                            <label for="sandbox-policy-strict" style="margin-bottom: 0; cursor: pointer; font-size: 0.8rem;">Enable Strict Upstream LLM Checks</label>
+                            <label for="sandbox-policy-strict"
+                                style="margin-bottom: 0; cursor: pointer; font-size: 0.8rem;">Enable Strict Upstream LLM
+                                Checks</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Sandbox Dry-Run Output Result Console -->
-                <div class="table-card hidden" id="sandbox-results-card" style="width: 100%; margin-top: 1.5rem; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; clear: both; z-index: 5;">
+                <div class="table-card hidden" id="sandbox-results-card"
+                    style="width: 100%; margin-top: 1.5rem; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; clear: both; z-index: 5;">
                     <div class="table-header" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="terminal" style="color: #60a5fa;"></i>
                             <h3>Sandbox Evaluation Result</h3>
                         </div>
-                        <span id="sandbox-allowed-badge" class="plan-info-pill" style="font-size: 0.8rem;">Allowed</span>
+                        <span id="sandbox-allowed-badge" class="plan-info-pill"
+                            style="font-size: 0.8rem;">Allowed</span>
                     </div>
                     <div style="padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem;">
                         <div>
-                            <strong style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.25rem;">Sanitized / Masked Prompt Text:</strong>
-                            <div id="sandbox-masked-output" style="background: #0b0f19; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); color: #e2e8f0;"></div>
+                            <strong
+                                style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.25rem;">Sanitized
+                                / Masked Prompt Text:</strong>
+                            <div id="sandbox-masked-output"
+                                style="background: #0b0f19; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); color: #e2e8f0;">
+                            </div>
                         </div>
                         <div>
-                            <strong style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.5rem;">Detected Violations:</strong>
+                            <strong
+                                style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.5rem;">Detected
+                                Violations:</strong>
                             <div class="table-responsive">
                                 <table class="data-table" style="font-size: 0.8rem;">
                                     <thead>
@@ -969,20 +1018,28 @@
 
             <!-- Prompt Registry Tab Content -->
             <section id="tab-prompts" class="tab-panel">
-                <div class="prompts-split-container" style="display: grid !important; grid-template-columns: 280px 1fr !important; gap: 1.5rem !important; align-items: start !important; width: 100% !important;">
+                <div class="prompts-split-container"
+                    style="display: grid !important; grid-template-columns: 280px 1fr !important; gap: 1.5rem !important; align-items: start !important; width: 100% !important;">
                     <!-- Left List Pane -->
-                    <div class="prompts-list-panel" style="background: rgba(30, 41, 59, 0.4) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 12px !important; padding: 1.25rem !important; display: flex !important; flex-direction: column !important; gap: 1rem !important; width: 100% !important; box-sizing: border-box !important;">
+                    <div class="prompts-list-panel"
+                        style="background: rgba(30, 41, 59, 0.4) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 12px !important; padding: 1.25rem !important; display: flex !important; flex-direction: column !important; gap: 1rem !important; width: 100% !important; box-sizing: border-box !important;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600;">Templates</h3>
-                            <button id="open-create-prompt-btn" class="btn btn-primary btn-icon-only" style="padding: 6px;" title="Register New Prompt Template">
+                            <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600;">Templates
+                            </h3>
+                            <button id="open-create-prompt-btn" class="btn btn-primary btn-icon-only"
+                                style="padding: 6px;" title="Register New Prompt Template">
                                 <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
                             </button>
                         </div>
-                        <div class="prompt-search-wrapper" style="position: relative; display: flex; align-items: center; width: 100%;">
-                            <i data-lucide="search" style="position: absolute; left: 12px; width: 16px; height: 16px; color: var(--text-muted); pointer-events: none; z-index: 2;"></i>
-                            <input type="text" id="prompt-search-input" placeholder="Search by name or tag..." style="width: 100% !important; padding-left: 36px !important; background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; font-size: 0.95rem !important;">
+                        <div class="prompt-search-wrapper"
+                            style="position: relative; display: flex; align-items: center; width: 100%;">
+                            <i data-lucide="search"
+                                style="position: absolute; left: 12px; width: 16px; height: 16px; color: var(--text-muted); pointer-events: none; z-index: 2;"></i>
+                            <input type="text" id="prompt-search-input" placeholder="Search by name or tag..."
+                                style="width: 100% !important; padding-left: 36px !important; background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; font-size: 0.95rem !important;">
                         </div>
-                        <div id="prompts-cards-stack" class="prompts-cards-stack" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: calc(100vh - 260px); overflow-y: auto;">
+                        <div id="prompts-cards-stack" class="prompts-cards-stack"
+                            style="display: flex; flex-direction: column; gap: 0.75rem; max-height: calc(100vh - 260px); overflow-y: auto;">
                             <!-- Populated dynamically -->
                             <div class="empty-state">
                                 <i data-lucide="folder-open"></i>
@@ -992,288 +1049,390 @@
                     </div>
 
                     <!-- Right Detail Pane Wrapper -->
-                    <div class="prompts-right-pane" style="display: flex; flex-direction: column; width: 100%; min-width: 0;">
+                    <div class="prompts-right-pane"
+                        style="display: flex; flex-direction: column; width: 100%; min-width: 0;">
                         <!-- Right Detail Pane Placeholder (Hidden until a template is clicked) -->
-                        <div id="prompt-details-empty" style="background: rgba(30, 41, 59, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 4rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; min-height: 350px; width: 100%; box-sizing: border-box;">
-                            <i data-lucide="mouse-pointer-click" style="width: 48px; height: 48px; color: #a78bfa; margin-bottom: 0.5rem;"></i>
-                            <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 600; color: #f8fafc; margin: 0;">Select a Prompt Template</h3>
-                            <p style="font-size: 0.85rem; color: #94a3b8; margin: 0; max-width: 380px;">Click on <strong>support_replier</strong> or any template on the left to view version history, configure A/B experiments, and test prompts.</p>
+                        <div id="prompt-details-empty"
+                            style="background: rgba(30, 41, 59, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 4rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; min-height: 350px; width: 100%; box-sizing: border-box;">
+                            <i data-lucide="mouse-pointer-click"
+                                style="width: 48px; height: 48px; color: #a78bfa; margin-bottom: 0.5rem;"></i>
+                            <h3
+                                style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 600; color: #f8fafc; margin: 0;">
+                                Select a Prompt Template</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin: 0; max-width: 380px;">Click on
+                                <strong>support_replier</strong> or any template on the left to view version history,
+                                configure A/B experiments, and test prompts.</p>
                         </div>
 
-                        <div id="prompt-details-panel" class="prompt-details-panel hidden" style="background: rgba(30, 41, 59, 0.25) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 12px !important; padding: 1.5rem !important; display: flex !important; flex-direction: column !important; gap: 1.5rem !important; width: 100% !important; box-sizing: border-box !important;">
-                        <div class="prompt-details-header">
-                            <div class="prompt-details-title-area">
-                                <h2 id="prompt-detail-name">Template Name</h2>
-                                <p id="prompt-detail-desc" style="color: var(--text-secondary); font-size: 0.9rem;">Template description goes here...</p>
-                                <div id="prompt-detail-tags" class="prompt-tags-list" style="margin-top: 0.25rem;">
-                                    <!-- Dynamic tags -->
+                        <div id="prompt-details-panel" class="prompt-details-panel hidden"
+                            style="background: rgba(30, 41, 59, 0.25) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 12px !important; padding: 1.5rem !important; display: flex !important; flex-direction: column !important; gap: 1.5rem !important; width: 100% !important; box-sizing: border-box !important;">
+                            <div class="prompt-details-header">
+                                <div class="prompt-details-title-area">
+                                    <h2 id="prompt-detail-name">Template Name</h2>
+                                    <p id="prompt-detail-desc" style="color: var(--text-secondary); font-size: 0.9rem;">
+                                        Template description goes here...</p>
+                                    <div id="prompt-detail-tags" class="prompt-tags-list" style="margin-top: 0.25rem;">
+                                        <!-- Dynamic tags -->
+                                    </div>
                                 </div>
-                            </div>
-                            <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                <div class="live-indicator" id="prompt-experiment-badge" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-green); display: none;">
-                                    <span class="pulse-dot"></span>
-                                    <span>A/B Experiment Active</span>
-                                </div>
-                                <span class="plan-info-pill" id="prompt-active-version-badge" style="background: rgba(124, 58, 237, 0.15); color: #a78bfa;">Active Version: None</span>
-                            </div>
-                        </div>
-
-                        <div class="prompt-inner-tabs" style="display: flex; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
-                            <button class="prompt-inner-tab-btn active" data-prompt-tab="versions" style="background: rgba(124, 58, 237, 0.2) !important; border: 1px solid #7c3aed !important; color: #a78bfa !important; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                <i data-lucide="history" style="width: 16px; height: 16px;"></i>
-                                <span>Versions</span>
-                            </button>
-                            <button class="prompt-inner-tab-btn" data-prompt-tab="experiment" style="background: rgba(30, 41, 59, 0.6) !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #cbd5e1 !important; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                <i data-lucide="split" style="width: 16px; height: 16px;"></i>
-                                <span>A/B Experiment</span>
-                            </button>
-                            <button class="prompt-inner-tab-btn" data-prompt-tab="eval" style="background: rgba(30, 41, 59, 0.6) !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #cbd5e1 !important; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                <i data-lucide="bar-chart-2" style="width: 16px; height: 16px;"></i>
-                                <span>Performance Evaluation</span>
-                            </button>
-                            <button class="prompt-inner-tab-btn" data-prompt-tab="sandbox" style="background: rgba(30, 41, 59, 0.6) !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #cbd5e1 !important; border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                <i data-lucide="play" style="width: 16px; height: 16px;"></i>
-                                <span>Playground Sandbox</span>
-                            </button>
-                        </div>
-
-                        <!-- Inner Tab 1: Versions List & Add Form -->
-                        <div id="prompt-inner-tab-versions" class="prompt-inner-tab-content active">
-                            <div class="table-card">
-                                <div class="table-header">
-                                    <h3>Version History</h3>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="data-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Version</th>
-                                                <th>Description</th>
-                                                <th>System Prompt</th>
-                                                <th>User Prompt</th>
-                                                <th>Created At</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="prompt-versions-tbody">
-                                            <!-- Dynamically populated -->
-                                        </tbody>
-                                    </table>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <div class="live-indicator" id="prompt-experiment-badge"
+                                        style="background: rgba(16, 185, 129, 0.12); color: var(--accent-green); display: none;">
+                                        <span class="pulse-dot"></span>
+                                        <span>A/B Experiment Active</span>
+                                    </div>
+                                    <span class="plan-info-pill" id="prompt-active-version-badge"
+                                        style="background: rgba(124, 58, 237, 0.15); color: #a78bfa;">Active Version:
+                                        None</span>
                                 </div>
                             </div>
 
-                            <!-- Create Version Form -->
-                            <div class="table-card" style="padding: 1.5rem;">
-                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; color: #f8fafc;">Register New Prompt Version</h3>
-                                <form id="create-prompt-version-form">
-                                    <div class="form-group" style="margin-bottom: 1.25rem;">
-                                        <label for="pv-version-input" style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">VERSION CODE</label>
-                                        <input type="text" id="pv-version-input" required placeholder="e.g. Reasoning & Support Prompt Evaluation" maxlength="100" style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
-                                    </div>
-                                    <div class="form-group" style="margin-bottom: 1.25rem;">
-                                        <label for="pv-desc-input" style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">RELEASE DESCRIPTION</label>
-                                        <input type="text" id="pv-desc-input" required placeholder="e.g. Initial support translation instructions" style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
-                                    </div>
-                                    <div class="form-group" style="margin-bottom: 1.25rem;">
-                                        <label for="pv-system-input" style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">SYSTEM INSTRUCTIONS (OPTIONAL)</label>
-                                        <textarea id="pv-system-input" rows="2" placeholder="Instructions that guide model behavior, e.g.: You are a helpful {{role}}..." style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;"></textarea>
-                                    </div>
-                                    <div class="form-group" style="margin-bottom: 1.25rem;">
-                                        <label for="pv-user-input" style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">USER PROMPT TEMPLATE (REQUIRED)</label>
-                                        <textarea id="pv-user-input" rows="4" required placeholder="Enter prompt to evaluate across models..." style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;"></textarea>
-                                        <span class="field-help" style="font-size: 0.8rem; color: #64748b; margin-top: 0.35rem; display: block;">Use <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: #a78bfa;">{{variable_name}}</code> syntax to define dynamic template variables.</span>
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 1.25rem; margin-bottom: 1.25rem;">
-                                        <input type="checkbox" id="pv-active-input" style="width: 18px !important; height: 18px !important; accent-color: #7c3aed; cursor: pointer; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important;">
-                                        <label for="pv-active-input" style="font-size: 0.9rem !important; color: #e2e8f0 !important; cursor: pointer; font-weight: 500 !important; text-transform: none !important; letter-spacing: normal !important; margin: 0 !important;">Set as default active version</label>
-                                    </div>
-                                    <div style="display: flex; justify-content: flex-end;">
-                                        <button type="submit" class="btn btn-primary">
-                                            <span>Create Version</span>
-                                            <i data-lucide="plus"></i>
-                                        </button>
-                                    </div>
-                                </form>
+                            <div class="prompt-inner-tabs">
+                                <button class="prompt-inner-tab-btn active" data-prompt-tab="versions">
+                                    <i data-lucide="history" style="width: 16px; height: 16px;"></i>
+                                    <span>Versions</span>
+                                </button>
+                                <button class="prompt-inner-tab-btn" data-prompt-tab="experiment">
+                                    <i data-lucide="split" style="width: 16px; height: 16px;"></i>
+                                    <span>A/B Experiment</span>
+                                </button>
+                                <button class="prompt-inner-tab-btn" data-prompt-tab="eval">
+                                    <i data-lucide="bar-chart-2" style="width: 16px; height: 16px;"></i>
+                                    <span>Performance Evaluation</span>
+                                </button>
+                                <button class="prompt-inner-tab-btn" data-prompt-tab="sandbox">
+                                    <i data-lucide="play" style="width: 16px; height: 16px;"></i>
+                                    <span>Playground Sandbox</span>
+                                </button>
                             </div>
-                        </div>
 
-                        <!-- Inner Tab 2: A/B Testing Config -->
-                        <div id="prompt-inner-tab-experiment" class="prompt-inner-tab-content">
-                            <div class="table-card" style="padding: 1.25rem;">
-                                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #f8fafc;">A/B Experiment Traffic Splitter</h3>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Configure weights to randomly split traffic across different prompt versions when routing requests specifying this template. Weights must sum to 100%.</p>
-                                
-                                <form id="prompt-experiment-form">
-                                    <div class="form-group" style="margin-bottom: 1.25rem;">
-                                        <label for="exp-name-input" style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">EXPERIMENT NAME</label>
-                                        <input type="text" id="exp-name-input" required placeholder="e.g. Translation A/B Test v1 vs v2" style="width: 100% !important; background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
+                            <!-- Inner Tab 1: Versions List & Add Form -->
+                            <div id="prompt-inner-tab-versions" class="prompt-inner-tab-content active">
+                                <div class="table-card">
+                                    <div class="table-header">
+                                        <h3>Version History</h3>
                                     </div>
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 1rem; margin-bottom: 1.25rem;">
-                                        <input type="checkbox" id="exp-active-input" checked style="width: 18px !important; height: 18px !important; accent-color: #7c3aed; cursor: pointer; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important;">
-                                        <label for="exp-active-input" style="font-size: 0.9rem !important; color: #e2e8f0 !important; cursor: pointer; font-weight: 500 !important; text-transform: none !important; letter-spacing: normal !important; margin: 0 !important;">Enable traffic split routing</label>
+                                    <div class="table-responsive">
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Version</th>
+                                                    <th>Description</th>
+                                                    <th>System Prompt</th>
+                                                    <th>User Prompt</th>
+                                                    <th>Created At</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="prompt-versions-tbody">
+                                                <!-- Dynamically populated -->
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    
-                                    <div style="margin-bottom: 1rem;">
-                                        <strong style="font-size: 0.9rem; color: #e2e8f0; display: block; margin-bottom: 0.75rem;">Variants Weights Allocation</strong>
-                                        <div id="variants-weights-list" class="variants-weights-list">
-                                            <!-- Dynamic variant weights sliders -->
+                                </div>
+
+                                <!-- Create Version Form -->
+                                <div class="table-card" style="padding: 1.5rem;">
+                                    <h3
+                                        style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; color: #f8fafc;">
+                                        Register New Prompt Version</h3>
+                                    <form id="create-prompt-version-form">
+                                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                                            <label for="pv-version-input"
+                                                style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">VERSION
+                                                CODE</label>
+                                            <input type="text" id="pv-version-input" required
+                                                placeholder="e.g. Reasoning & Support Prompt Evaluation" maxlength="100"
+                                                style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
                                         </div>
-                                    </div>
-                                    
-                                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
-                                        <span id="experiment-weights-total" style="font-size: 0.9rem; font-weight: 600; color: var(--accent-red);">Total allocated: 0%</span>
-                                        <button type="submit" class="btn btn-primary" id="save-experiment-btn">
-                                            <span>Save & Deploy Experiment</span>
-                                            <i data-lucide="check"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Inner Tab 3: Evaluation Metrics comparison -->
-                        <div id="prompt-inner-tab-eval" class="prompt-inner-tab-content">
-                            <div class="table-card">
-                                <div class="table-header">
-                                    <h3>Version Performance Matrix</h3>
+                                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                                            <label for="pv-desc-input"
+                                                style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">RELEASE
+                                                DESCRIPTION</label>
+                                            <input type="text" id="pv-desc-input" required
+                                                placeholder="e.g. Initial support translation instructions"
+                                                style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                                            <label for="pv-system-input"
+                                                style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">SYSTEM
+                                                INSTRUCTIONS (OPTIONAL)</label>
+                                            <textarea id="pv-system-input" rows="2"
+                                                placeholder="Instructions that guide model behavior, e.g.: You are a helpful {{role}}..."
+                                                style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;"></textarea>
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                                            <label for="pv-user-input"
+                                                style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">USER
+                                                PROMPT TEMPLATE (REQUIRED)</label>
+                                            <textarea id="pv-user-input" rows="4" required
+                                                placeholder="Enter prompt to evaluate across models..."
+                                                style="background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;"></textarea>
+                                            <span class="field-help"
+                                                style="font-size: 0.8rem; color: #64748b; margin-top: 0.35rem; display: block;">Use
+                                                <code
+                                                    style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: #a78bfa;">{{variable_name}}</code>
+                                                syntax to define dynamic template variables.</span>
+                                        </div>
+                                        <div
+                                            style="display: flex; align-items: center; gap: 10px; margin-top: 1.25rem; margin-bottom: 1.25rem;">
+                                            <input type="checkbox" id="pv-active-input"
+                                                style="width: 18px !important; height: 18px !important; accent-color: #7c3aed; cursor: pointer; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important;">
+                                            <label for="pv-active-input"
+                                                style="font-size: 0.9rem !important; color: #e2e8f0 !important; cursor: pointer; font-weight: 500 !important; text-transform: none !important; letter-spacing: normal !important; margin: 0 !important;">Set
+                                                as default active version</label>
+                                        </div>
+                                        <div style="display: flex; justify-content: flex-end;">
+                                            <button type="submit" class="btn btn-primary">
+                                                <span>Create Version</span>
+                                                <i data-lucide="plus"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="data-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Version</th>
-                                                <th>Total Calls</th>
-                                                <th>Success Rate</th>
-                                                <th>Cache Hits</th>
-                                                <th>Safety Blocked</th>
-                                                <th>Avg Latency</th>
-                                                <th>Avg Cost</th>
-                                                <th>Helpfulness</th>
-                                                <th>Accuracy</th>
-                                                <th>Safety Score</th>
-                                                <th>Tone Score</th>
-                                                <th>Completeness</th>
-                                                <th>Overall Quality</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="prompt-eval-tbody">
-                                            <tr>
-                                                <td colspan="13" class="empty-state">No evaluation metrics loaded yet.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
-                        </div>
 
-                        <!-- Inner Tab 4: Sandbox Playground -->
-                        <div id="prompt-inner-tab-sandbox" class="prompt-inner-tab-content">
-                            <div class="sandbox-grid">
-                                <!-- Left inputs & Preview -->
-                                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                                    <div class="table-card" style="padding: 1.25rem;">
-                                        <h3 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #f8fafc;">Execution Inputs</h3>
-                                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                                            <div class="form-group">
-                                                <label for="sandbox-key-select">Gateway Key</label>
-                                                <select id="sandbox-key-select" class="plan-select-dropdown" style="width: 100%;">
-                                                    <option value="">Default Session Key</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sandbox-version-select">Select Version</label>
-                                                <select id="sandbox-version-select" class="plan-select-dropdown" style="width: 100%;">
-                                                    <option value="">Select a Prompt Template first</option>
-                                                </select>
+                            <!-- Inner Tab 2: A/B Testing Config -->
+                            <div id="prompt-inner-tab-experiment" class="prompt-inner-tab-content">
+                                <div class="table-card" style="padding: 1.25rem;">
+                                    <h3
+                                        style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #f8fafc;">
+                                        A/B Experiment Traffic Splitter</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                        Configure weights to randomly split traffic across different prompt versions
+                                        when routing requests specifying this template. Weights must sum to 100%.</p>
+
+                                    <form id="prompt-experiment-form">
+                                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                                            <label for="exp-name-input"
+                                                style="font-size: 0.75rem; color: #cbd5e1; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">EXPERIMENT
+                                                NAME</label>
+                                            <input type="text" id="exp-name-input" required
+                                                placeholder="e.g. Translation A/B Test v1 vs v2"
+                                                style="width: 100% !important; background: #090d16 !important; color: #f8fafc !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.85rem 1.1rem !important; font-size: 0.95rem !important;">
+                                        </div>
+                                        <div
+                                            style="display: flex; align-items: center; gap: 10px; margin-top: 1rem; margin-bottom: 1.25rem;">
+                                            <input type="checkbox" id="exp-active-input" checked
+                                                style="width: 18px !important; height: 18px !important; accent-color: #7c3aed; cursor: pointer; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important;">
+                                            <label for="exp-active-input"
+                                                style="font-size: 0.9rem !important; color: #e2e8f0 !important; cursor: pointer; font-weight: 500 !important; text-transform: none !important; letter-spacing: normal !important; margin: 0 !important;">Enable
+                                                traffic split routing</label>
+                                        </div>
+
+                                        <div style="margin-bottom: 1rem;">
+                                            <strong
+                                                style="font-size: 0.9rem; color: #e2e8f0; display: block; margin-bottom: 0.75rem;">Variants
+                                                Weights Allocation</strong>
+                                            <div id="variants-weights-list" class="variants-weights-list">
+                                                <!-- Dynamic variant weights sliders -->
                                             </div>
                                         </div>
-                                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                                            <div class="form-group">
-                                                <label for="sandbox-provider-select">Provider Override</label>
-                                                <select id="sandbox-provider-select" class="plan-select-dropdown" style="width: 100%;">
-                                                    <option value="">Default Routing</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sandbox-model-select">Model Override</label>
-                                                <select id="sandbox-model-select" class="plan-select-dropdown" style="width: 100%;">
-                                                    <option value="">Default Model</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Dynamically generated variables input fields container -->
-                                        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem;">
-                                            <strong style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.75rem;">Variables Parameters</strong>
-                                            <div id="sandbox-variables-inputs" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                                <p style="font-size: 0.8rem; color: var(--text-muted);">No variable placeholders (e.g. {{var}}) found in prompt template.</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Dynamic Validation Summary -->
-                                        <div id="sandbox-validation-summary" class="validation-summary-card valid" style="margin-top: 1rem; display: none;">
-                                            <h5 id="sandbox-validation-title">Variables Valid</h5>
-                                            <ul id="sandbox-validation-list" class="validation-errors-list"></ul>
-                                        </div>
 
-                                        <button id="run-sandbox-prompt-btn" class="btn btn-primary btn-block" style="margin-top: 1.25rem;">
-                                            <span>Execute Prompt Request</span>
-                                            <i data-lucide="play"></i>
-                                        </button>
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
+                                            <span id="experiment-weights-total"
+                                                style="font-size: 0.9rem; font-weight: 600; color: var(--accent-red);">Total
+                                                allocated: 0%</span>
+                                            <button type="submit" class="btn btn-primary" id="save-experiment-btn">
+                                                <span>Save & Deploy Experiment</span>
+                                                <i data-lucide="check"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Inner Tab 3: Evaluation Metrics comparison -->
+                            <div id="prompt-inner-tab-eval" class="prompt-inner-tab-content">
+                                <div class="table-card">
+                                    <div class="table-header">
+                                        <h3>Version Performance Matrix</h3>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Version</th>
+                                                    <th>Total Calls</th>
+                                                    <th>Success Rate</th>
+                                                    <th>Cache Hits</th>
+                                                    <th>Safety Blocked</th>
+                                                    <th>Avg Latency</th>
+                                                    <th>Avg Cost</th>
+                                                    <th>Helpfulness</th>
+                                                    <th>Accuracy</th>
+                                                    <th>Safety Score</th>
+                                                    <th>Tone Score</th>
+                                                    <th>Completeness</th>
+                                                    <th>Overall Quality</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="prompt-eval-tbody">
+                                                <tr>
+                                                    <td colspan="13" class="empty-state">No evaluation metrics loaded
+                                                        yet.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Right Live Preview & Outcome -->
-                                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                                    <!-- Rendered Prompt Live Preview Box -->
-                                    <div class="table-card" style="padding: 1.25rem;">
-                                        <h3 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #f8fafc; display: flex; align-items: center; gap: 6px;">
-                                            <i data-lucide="eye" style="color: var(--accent-purple-light); width: 18px; height: 18px;"></i>
-                                            Live Prompt Preview
-                                        </h3>
-                                        <div style="margin-bottom: 0.75rem;">
-                                            <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem; font-weight: 600;">Rendered System instructions:</span>
-                                            <pre id="sandbox-rendered-system" style="background: #090d16; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 40px; max-height: 100px; overflow-y: auto; color: #9aa2c0;">No system prompt template.</pre>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem; font-weight: 600;">Rendered User Prompt:</span>
-                                            <pre id="sandbox-rendered-user" style="background: #090d16; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 80px; max-height: 250px; overflow-y: auto; color: #cbd5e1;">Enter variables values to preview prompt template.</pre>
-                                        </div>
-                                    </div>
-
-                                    <!-- Response Outcome -->
-                                    <div id="sandbox-response-card" class="table-card hidden" style="padding: 1.25rem;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
-                                            <h3 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: #f8fafc;">Execution Response</h3>
-                                            <span class="plan-info-pill" id="sandbox-meta-badge" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-green); font-size: 0.8rem;">Gemini | gemini-2.5-flash</span>
-                                        </div>
-                                        
-                                        <!-- Response text -->
-                                        <pre id="sandbox-response-output" style="background: #090d16; padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 80px; max-height: 250px; overflow-y: auto; color: #cbd5e1; margin-bottom: 1rem;"></pre>
-                                        
-                                        <!-- Cost / Latency details -->
-                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem; color: var(--text-secondary); background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                                            <div>Latency: <strong id="sandbox-meta-latency" style="color: var(--text-primary);">0 ms</strong></div>
-                                            <div>Tokens: <strong id="sandbox-meta-tokens" style="color: var(--text-primary);">0</strong></div>
-                                            <div>Cost: <strong id="sandbox-meta-cost" style="color: var(--text-primary);">$0.00</strong></div>
-                                            <div>Trace ID: <strong id="sandbox-meta-trace-id" style="color: var(--text-primary);">N/A</strong></div>
-                                        </div>
-
-                                        <!-- Manual feedback score stars -->
-                                        <div id="sandbox-feedback-section" style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.25rem;">
-                                            <span style="font-size: 0.85rem; color: #e2e8f0; display: block; margin-bottom: 0.5rem; font-weight: 500;">Rate Response Quality (Developer Evaluation):</span>
-                                            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-                                                <div class="feedback-stars-container" id="sandbox-feedback-stars">
-                                                    <button class="star-btn" data-rating="1"><i data-lucide="star" style="width: 20px; height: 20px; fill: currentColor;"></i></button>
-                                                    <button class="star-btn" data-rating="2"><i data-lucide="star" style="width: 20px; height: 20px; fill: currentColor;"></i></button>
-                                                    <button class="star-btn" data-rating="3"><i data-lucide="star" style="width: 20px; height: 20px; fill: currentColor;"></i></button>
-                                                    <button class="star-btn" data-rating="4"><i data-lucide="star" style="width: 20px; height: 20px; fill: currentColor;"></i></button>
-                                                    <button class="star-btn" data-rating="5"><i data-lucide="star" style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                            <!-- Inner Tab 4: Sandbox Playground -->
+                            <div id="prompt-inner-tab-sandbox" class="prompt-inner-tab-content">
+                                <div class="sandbox-grid">
+                                    <!-- Left inputs & Preview -->
+                                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                                        <div class="table-card" style="padding: 1.25rem;">
+                                            <h3
+                                                style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #f8fafc;">
+                                                Execution Inputs</h3>
+                                            <div class="form-row"
+                                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                                <div class="form-group">
+                                                    <label for="sandbox-key-select">Gateway Key</label>
+                                                    <select id="sandbox-key-select" class="plan-select-dropdown"
+                                                        style="width: 100%;">
+                                                        <option value="">Default Session Key</option>
+                                                    </select>
                                                 </div>
-                                                <button class="btn btn-secondary" id="submit-sandbox-feedback-btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">
-                                                    <span>Submit Rating</span>
-                                                </button>
+                                                <div class="form-group">
+                                                    <label for="sandbox-version-select">Select Version</label>
+                                                    <select id="sandbox-version-select" class="plan-select-dropdown"
+                                                        style="width: 100%;">
+                                                        <option value="">Select a Prompt Template first</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row"
+                                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                                <div class="form-group">
+                                                    <label for="sandbox-provider-select">Provider Override</label>
+                                                    <select id="sandbox-provider-select" class="plan-select-dropdown"
+                                                        style="width: 100%;">
+                                                        <option value="">Default Routing</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sandbox-model-select">Model Override</label>
+                                                    <select id="sandbox-model-select" class="plan-select-dropdown"
+                                                        style="width: 100%;">
+                                                        <option value="">Default Model</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Dynamically generated variables input fields container -->
+                                            <div
+                                                style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem;">
+                                                <strong
+                                                    style="font-size: 0.85rem; color: #9aa2c0; display: block; margin-bottom: 0.75rem;">Variables
+                                                    Parameters</strong>
+                                                <div id="sandbox-variables-inputs"
+                                                    style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                                    <p style="font-size: 0.8rem; color: var(--text-muted);">No variable
+                                                        placeholders (e.g. {{var}}) found in prompt template.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Dynamic Validation Summary -->
+                                            <div id="sandbox-validation-summary" class="validation-summary-card valid"
+                                                style="margin-top: 1rem; display: none;">
+                                                <h5 id="sandbox-validation-title">Variables Valid</h5>
+                                                <ul id="sandbox-validation-list" class="validation-errors-list"></ul>
+                                            </div>
+
+                                            <button id="run-sandbox-prompt-btn" class="btn btn-primary btn-block"
+                                                style="margin-top: 1.25rem;">
+                                                <span>Execute Prompt Request</span>
+                                                <i data-lucide="play"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Live Preview & Outcome -->
+                                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                                        <!-- Rendered Prompt Live Preview Box -->
+                                        <div class="table-card" style="padding: 1.25rem;">
+                                            <h3
+                                                style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; color: #f8fafc; display: flex; align-items: center; gap: 6px;">
+                                                <i data-lucide="eye"
+                                                    style="color: var(--accent-purple-light); width: 18px; height: 18px;"></i>
+                                                Live Prompt Preview
+                                            </h3>
+                                            <div style="margin-bottom: 0.75rem;">
+                                                <span
+                                                    style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem; font-weight: 600;">Rendered
+                                                    System instructions:</span>
+                                                <pre id="sandbox-rendered-system"
+                                                    style="background: #090d16; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 40px; max-height: 100px; overflow-y: auto; color: #9aa2c0;">No system prompt template.</pre>
+                                            </div>
+                                            <div>
+                                                <span
+                                                    style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem; font-weight: 600;">Rendered
+                                                    User Prompt:</span>
+                                                <pre id="sandbox-rendered-user"
+                                                    style="background: #090d16; padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 80px; max-height: 250px; overflow-y: auto; color: #cbd5e1;">Enter variables values to preview prompt template.</pre>
+                                            </div>
+                                        </div>
+
+                                        <!-- Response Outcome -->
+                                        <div id="sandbox-response-card" class="table-card hidden"
+                                            style="padding: 1.25rem;">
+                                            <div
+                                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                                                <h3
+                                                    style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: #f8fafc;">
+                                                    Execution Response</h3>
+                                                <span class="plan-info-pill" id="sandbox-meta-badge"
+                                                    style="background: rgba(16, 185, 129, 0.12); color: var(--accent-green); font-size: 0.8rem;">Gemini
+                                                    | gemini-2.5-flash</span>
+                                            </div>
+
+                                            <!-- Response text -->
+                                            <pre id="sandbox-response-output"
+                                                style="background: #090d16; padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; border: 1px solid rgba(255,255,255,0.05); min-height: 80px; max-height: 250px; overflow-y: auto; color: #cbd5e1; margin-bottom: 1rem;"></pre>
+
+                                            <!-- Cost / Latency details -->
+                                            <div
+                                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem; color: var(--text-secondary); background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                                                <div>Latency: <strong id="sandbox-meta-latency"
+                                                        style="color: var(--text-primary);">0 ms</strong></div>
+                                                <div>Tokens: <strong id="sandbox-meta-tokens"
+                                                        style="color: var(--text-primary);">0</strong></div>
+                                                <div>Cost: <strong id="sandbox-meta-cost"
+                                                        style="color: var(--text-primary);">$0.00</strong></div>
+                                                <div>Trace ID: <strong id="sandbox-meta-trace-id"
+                                                        style="color: var(--text-primary);">N/A</strong></div>
+                                            </div>
+
+                                            <!-- Manual feedback score stars -->
+                                            <div id="sandbox-feedback-section"
+                                                style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.25rem;">
+                                                <span
+                                                    style="font-size: 0.85rem; color: #e2e8f0; display: block; margin-bottom: 0.5rem; font-weight: 500;">Rate
+                                                    Response Quality (Developer Evaluation):</span>
+                                                <div
+                                                    style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                                                    <div class="feedback-stars-container" id="sandbox-feedback-stars">
+                                                        <button class="star-btn" data-rating="1"><i data-lucide="star"
+                                                                style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                                                        <button class="star-btn" data-rating="2"><i data-lucide="star"
+                                                                style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                                                        <button class="star-btn" data-rating="3"><i data-lucide="star"
+                                                                style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                                                        <button class="star-btn" data-rating="4"><i data-lucide="star"
+                                                                style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                                                        <button class="star-btn" data-rating="5"><i data-lucide="star"
+                                                                style="width: 20px; height: 20px; fill: currentColor;"></i></button>
+                                                    </div>
+                                                    <button class="btn btn-secondary" id="submit-sandbox-feedback-btn"
+                                                        style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">
+                                                        <span>Submit Rating</span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1281,7 +1440,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- Model Leaderboard & Benchmarking Tab Panel -->
@@ -1291,11 +1449,13 @@
                     <div class="quota-banner-card" style="margin-bottom: 0;">
                         <div class="quota-banner-header">
                             <div>
-                                <h2 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.25rem;">
+                                <h2
+                                    style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.25rem;">
                                     Scientific Model Evaluation & Leaderboard
                                 </h2>
                                 <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
-                                    Benchmark models empirically across Quality, P50/P95 Latency, Cost, Throughput, and Reliability.
+                                    Benchmark models empirically across Quality, P50/P95 Latency, Cost, Throughput, and
+                                    Reliability.
                                 </p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -1319,7 +1479,8 @@
 
                     <!-- Leaderboard Table Card -->
                     <div class="table-card" style="padding: 1.25rem;">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                        <h3
+                            style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="trophy" style="color: var(--accent-yellow); width: 20px; height: 20px;"></i>
                             Model Leaderboard Rankings
                         </h3>
@@ -1340,7 +1501,9 @@
                                 </thead>
                                 <tbody id="leaderboard-tbody">
                                     <tr>
-                                        <td colspan="9" style="text-align: center; color: var(--text-secondary); padding: 2rem;">Loading leaderboard rankings...</td>
+                                        <td colspan="9"
+                                            style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                            Loading leaderboard rankings...</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1349,12 +1512,15 @@
 
                     <!-- Benchmark History Cards -->
                     <div class="table-card" style="padding: 1.25rem;">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
-                            <i data-lucide="history" style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
+                        <h3
+                            style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: #f8fafc; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="history"
+                                style="color: var(--accent-purple-light); width: 20px; height: 20px;"></i>
                             Benchmark Job History
                         </h3>
                         <div id="benchmark-jobs-container" style="display: flex; flex-direction: column; gap: 1rem;">
-                            <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">No benchmark jobs recorded yet.</div>
+                            <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">No benchmark
+                                jobs recorded yet.</div>
                         </div>
                     </div>
                 </div>
@@ -1372,26 +1538,38 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="bm-name-input">Benchmark Run Title</label>
-                            <input type="text" id="bm-name-input" required placeholder="e.g. Reasoning & Support Prompt Evaluation" maxlength="100">
+                            <input type="text" id="bm-name-input" required
+                                placeholder="e.g. Reasoning & Support Prompt Evaluation" maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="bm-prompt-input">Evaluation Prompt</label>
-                            <textarea id="bm-prompt-input" required rows="4" style="width: 100%; background: #090d16; color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.75rem; font-family: monospace; font-size: 0.85rem;" placeholder="Enter prompt to evaluate across models..."></textarea>
+                            <textarea id="bm-prompt-input" required rows="4"
+                                style="width: 100%; background: #090d16; color: #f8fafc; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.75rem; font-family: monospace; font-size: 0.85rem;"
+                                placeholder="Enter prompt to evaluate across models..."></textarea>
                         </div>
                         <div class="form-group">
                             <label>Target Models (Multi-Select)</label>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: rgba(15,23,42,0.6); padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
-                                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
-                                    <input type="checkbox" name="bm-models" value="gemini::gemini-2.5-flash" checked> Gemini 2.5 Flash
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: rgba(15,23,42,0.6); padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
+                                <label
+                                    style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                                    <input type="checkbox" name="bm-models" value="gemini::gemini-2.5-flash" checked>
+                                    Gemini 2.5 Flash
                                 </label>
-                                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
-                                    <input type="checkbox" name="bm-models" value="openai::gpt-4o-mini" checked> OpenAI GPT-4o Mini
+                                <label
+                                    style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                                    <input type="checkbox" name="bm-models" value="openai::gpt-4o-mini" checked> OpenAI
+                                    GPT-4o Mini
                                 </label>
-                                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
-                                    <input type="checkbox" name="bm-models" value="groq::llama-3.3-70b-versatile" checked> Groq Llama 3.3 70B
+                                <label
+                                    style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                                    <input type="checkbox" name="bm-models" value="groq::llama-3.3-70b-versatile"
+                                        checked> Groq Llama 3.3 70B
                                 </label>
-                                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
-                                    <input type="checkbox" name="bm-models" value="deepseek::deepseek-chat" checked> DeepSeek Chat
+                                <label
+                                    style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                                    <input type="checkbox" name="bm-models" value="deepseek::deepseek-chat" checked>
+                                    DeepSeek Chat
                                 </label>
                             </div>
                         </div>
@@ -1407,10 +1585,12 @@
                             </div>
                         </div>
                         <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
-                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                            <label
+                                style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
                                 <input type="checkbox" id="bm-bypass-cache" checked> Bypass Cache (Fresh LLM Runs)
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
+                            <label
+                                style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer;">
                                 <input type="checkbox" id="bm-run-guardrails"> Run Guardrail Moderation
                             </label>
                         </div>
@@ -1437,16 +1617,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="prompt-name-input">Template Key Identifier</label>
-                            <input type="text" id="prompt-name-input" required placeholder="e.g. customer_support_replier" maxlength="100">
+                            <input type="text" id="prompt-name-input" required
+                                placeholder="e.g. customer_support_replier" maxlength="100">
                             <span class="field-help">A lowercase alphanumeric key identifier with no spaces.</span>
                         </div>
                         <div class="form-group">
                             <label for="prompt-desc-input">Description</label>
-                            <input type="text" id="prompt-desc-input" required placeholder="e.g. Used for generating support response templates">
+                            <input type="text" id="prompt-desc-input" required
+                                placeholder="e.g. Used for generating support response templates">
                         </div>
                         <div class="form-group">
                             <label for="prompt-tags-input">Tags (comma-separated)</label>
-                            <input type="text" id="prompt-tags-input" placeholder="e.g. support, billing, customer-service">
+                            <input type="text" id="prompt-tags-input"
+                                placeholder="e.g. support, billing, customer-service">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -1475,7 +1658,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="key-name-input">Descriptive Name</label>
-                        <input type="text" id="key-name-input" required placeholder="e.g. Production Mobile App" maxlength="100">
+                        <input type="text" id="key-name-input" required placeholder="e.g. Production Mobile App"
+                            maxlength="100">
                         <span class="field-help">A custom label to help identify where this key is deployed.</span>
                     </div>
                     <div class="form-group">
@@ -1490,20 +1674,26 @@
                     <div class="form-group">
                         <label for="key-rpm-input">Custom Rate Limit (RPM) - Optional</label>
                         <input type="number" id="key-rpm-input" min="1" placeholder="e.g. 60 (blank for plan default)">
-                        <span class="field-help">Override the Requests Per Minute cap for queries made with this specific key.</span>
+                        <span class="field-help">Override the Requests Per Minute cap for queries made with this
+                            specific key.</span>
                     </div>
                     <div class="form-group">
                         <label for="key-tokens-input">Custom Monthly Token Quota - Optional</label>
-                        <input type="number" id="key-tokens-input" min="1" placeholder="e.g. 100000 (blank for plan default)">
+                        <input type="number" id="key-tokens-input" min="1"
+                            placeholder="e.g. 100000 (blank for plan default)">
                         <span class="field-help">Override the monthly token consumption limit for this key.</span>
                     </div>
 
                     <!-- Content Safety policies overrides -->
-                    <div style="margin-top: 1.5rem; margin-bottom: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
-                        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: #a78bfa; margin-bottom: 0.5rem;">Content Safety Policies</h4>
-                        <p style="font-size: 0.8rem; color: #9aa2c0; margin-bottom: 0.75rem;">Set security guardrails rules enforced for all calls made with this key.</p>
+                    <div
+                        style="margin-top: 1.5rem; margin-bottom: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;">
+                        <h4
+                            style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: #a78bfa; margin-bottom: 0.5rem;">
+                            Content Safety Policies</h4>
+                        <p style="font-size: 0.8rem; color: #9aa2c0; margin-bottom: 0.75rem;">Set security guardrails
+                            rules enforced for all calls made with this key.</p>
                     </div>
-                    
+
                     <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label for="key-guardrail-pii">PII Action</label>
@@ -1535,13 +1725,16 @@
                         </div>
                         <div class="form-group">
                             <label for="key-guardrail-chars">Max Characters</label>
-                            <input type="number" id="key-guardrail-chars" value="100000" placeholder="e.g. 100000" style="width: 100%;">
+                            <input type="number" id="key-guardrail-chars" value="100000" placeholder="e.g. 100000"
+                                style="width: 100%;">
                         </div>
                     </div>
 
                     <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 0.5rem;">
                         <input type="checkbox" id="key-guardrail-strict" style="width: auto; cursor: pointer;">
-                        <label for="key-guardrail-strict" style="margin-bottom: 0; cursor: pointer; font-size: 0.85rem; color: #f8fafc;">Enable strict upstream LLM checks</label>
+                        <label for="key-guardrail-strict"
+                            style="margin-bottom: 0; cursor: pointer; font-size: 0.85rem; color: #f8fafc;">Enable strict
+                            upstream LLM checks</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1567,7 +1760,8 @@
                     <input type="hidden" id="rename-key-id">
                     <div class="form-group">
                         <label for="rename-key-name-input">New Name</label>
-                        <input type="text" id="rename-key-name-input" required placeholder="e.g. Production Mobile App" maxlength="100">
+                        <input type="text" id="rename-key-name-input" required placeholder="e.g. Production Mobile App"
+                            maxlength="100">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1592,10 +1786,11 @@
                     <i data-lucide="alert-triangle"></i>
                     <div>
                         <strong>Store this key securely!</strong>
-                        <p>For your security, it will only be shown to you this once. You will not be able to retrieve it again if you refresh or close this dialog.</p>
+                        <p>For your security, it will only be shown to you this once. You will not be able to retrieve
+                            it again if you refresh or close this dialog.</p>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Generated Gateway Token</label>
                     <div class="reveal-key-box">
@@ -1696,7 +1891,8 @@
                 <div class="details-grid">
                     <div class="detail-item">
                         <span class="detail-lbl">Trace ID</span>
-                        <span class="detail-val" id="trace-detail-id" style="font-weight: 600; color: var(--accent-purple-light);">N/A</span>
+                        <span class="detail-val" id="trace-detail-id"
+                            style="font-weight: 600; color: var(--accent-purple-light);">N/A</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-lbl">Overall Latency</span>
@@ -1712,22 +1908,30 @@
                     </div>
                 </div>
 
-                <div class="trace-splits-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                <div class="trace-splits-container"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
                     <!-- Timeline Section -->
-                    <div class="trace-timeline-section" style="background: rgba(15, 23, 42, 0.4); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h4 style="margin-top: 0; margin-bottom: 1rem; color: #e2e8f0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">
-                            <i data-lucide="clock" style="width: 18px; height: 18px; color: var(--accent-purple-light);"></i>
+                    <div class="trace-timeline-section"
+                        style="background: rgba(15, 23, 42, 0.4); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 1rem; color: #e2e8f0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">
+                            <i data-lucide="clock"
+                                style="width: 18px; height: 18px; color: var(--accent-purple-light);"></i>
                             Execution Stages
                         </h4>
-                        <div id="trace-timeline-flow" class="timeline-flow" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div id="trace-timeline-flow" class="timeline-flow"
+                            style="display: flex; flex-direction: column; gap: 1rem;">
                             <!-- Dynamically populated -->
                         </div>
                     </div>
 
                     <!-- Attempts Section -->
-                    <div class="trace-attempts-section" style="background: rgba(15, 23, 42, 0.4); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h4 style="margin-top: 0; margin-bottom: 1rem; color: #e2e8f0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">
-                            <i data-lucide="refresh-cw" style="width: 18px; height: 18px; color: var(--accent-green);"></i>
+                    <div class="trace-attempts-section"
+                        style="background: rgba(15, 23, 42, 0.4); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <h4
+                            style="margin-top: 0; margin-bottom: 1rem; color: #e2e8f0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">
+                            <i data-lucide="refresh-cw"
+                                style="width: 18px; height: 18px; color: var(--accent-green);"></i>
                             Provider Failover Attempts
                         </h4>
                         <div id="trace-attempts-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
@@ -1737,14 +1941,17 @@
                 </div>
 
                 <!-- Payloads Section -->
-                <div class="trace-payloads-container" style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="trace-payloads-container"
+                    style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="payload-box">
                         <span class="detail-lbl" style="margin-bottom: 0.5rem; display: block;">Prompt (Input)</span>
-                        <pre id="trace-detail-prompt" style="background: #090d16; padding: 1rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; max-height: 150px; overflow-y: auto; color: #cbd5e1;"></pre>
+                        <pre id="trace-detail-prompt"
+                            style="background: #090d16; padding: 1rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; max-height: 150px; overflow-y: auto; color: #cbd5e1;"></pre>
                     </div>
                     <div class="payload-box">
                         <span class="detail-lbl" style="margin-bottom: 0.5rem; display: block;">Response (Output)</span>
-                        <pre id="trace-detail-response" style="background: #090d16; padding: 1rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; max-height: 150px; overflow-y: auto; color: #cbd5e1;"></pre>
+                        <pre id="trace-detail-response"
+                            style="background: #090d16; padding: 1rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; max-height: 150px; overflow-y: auto; color: #cbd5e1;"></pre>
                     </div>
                 </div>
             </div>
@@ -1755,6 +1962,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=5"></script>
 </body>
+
 </html>
