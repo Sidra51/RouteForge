@@ -2328,28 +2328,9 @@ function initPromptEventListeners() {
     const innerTabBtns = document.querySelectorAll('.prompt-inner-tab-btn');
     innerTabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const targetSubTab = btn.getAttribute('data-prompt-tab');
-            
-            // Toggle active buttons
-            innerTabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Toggle active content divs
-            document.querySelectorAll('.prompt-inner-tab-content').forEach(div => {
-                div.classList.remove('active');
-            });
-            const contentDiv = document.getElementById(`prompt-inner-tab-${targetSubTab}`);
-            if (contentDiv) {
-                contentDiv.classList.add('active');
-            }
-
-            // Perform specific load updates
-            if (targetSubTab === 'experiment') {
-                updatePromptExperimentUI();
-            } else if (targetSubTab === 'eval' && state.selectedPrompt) {
-                fetchPromptEvalMetrics(state.selectedPrompt.id);
-            } else if (targetSubTab === 'sandbox') {
-                updatePromptSandboxPlaygroundUI();
+            const tabId = btn.id.replace('btn-prompt-tab-', '') || btn.getAttribute('data-prompt-tab');
+            if (tabId && window.switchPromptSubTab) {
+                window.switchPromptSubTab(tabId);
             }
         });
     });
@@ -2682,8 +2663,60 @@ function renderPromptDetailUI() {
     updatePromptExperimentUI();
     updatePromptSandboxPlaygroundUI();
     
+    // Default to versions tab on prompt switch
+    if (window.switchPromptSubTab) {
+        window.switchPromptSubTab('versions');
+    }
+    
     lucide.createIcons();
 }
+
+window.switchPromptSubTab = function(targetSubTab) {
+    const tabs = ['versions', 'experiment', 'eval', 'sandbox'];
+    
+    tabs.forEach(tab => {
+        const btn = document.getElementById(`btn-prompt-tab-${tab}`);
+        const content = document.getElementById(`prompt-inner-tab-${tab}`);
+        
+        if (tab === targetSubTab) {
+            if (btn) {
+                btn.classList.add('active');
+                btn.style.background = 'rgba(124, 58, 237, 0.25)';
+                btn.style.borderColor = '#7c3aed';
+                btn.style.color = '#a78bfa';
+                btn.style.fontWeight = '600';
+            }
+            if (content) {
+                content.classList.add('active');
+                content.style.display = 'block';
+            }
+        } else {
+            if (btn) {
+                btn.classList.remove('active');
+                btn.style.background = 'rgba(30, 41, 59, 0.7)';
+                btn.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                btn.style.color = '#94a3b8';
+                btn.style.fontWeight = '500';
+            }
+            if (content) {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            }
+        }
+    });
+
+    if (targetSubTab === 'experiment') {
+        updatePromptExperimentUI();
+    } else if (targetSubTab === 'eval' && state.selectedPrompt) {
+        fetchPromptEvalMetrics(state.selectedPrompt.id);
+    } else if (targetSubTab === 'sandbox') {
+        updatePromptSandboxPlaygroundUI();
+    }
+
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+    }
+};
 
 function updatePromptVersionsUI() {
     const tbody = document.getElementById('prompt-versions-tbody');

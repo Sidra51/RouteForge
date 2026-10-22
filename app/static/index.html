@@ -18,7 +18,7 @@
     <!-- Marked.js for rich markdown and table formatting -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <style>
         .quota-banner-card {
             background: rgba(30, 41, 59, 0.5);
@@ -1087,27 +1087,31 @@
                                 </div>
                             </div>
 
-                            <div class="prompt-inner-tabs">
-                                <button class="prompt-inner-tab-btn active" data-prompt-tab="versions">
+                            <div class="prompt-inner-tabs" style="display: flex; gap: 0.65rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.85rem; margin-bottom: 1.25rem;">
+                                <button class="prompt-inner-tab-btn active" id="btn-prompt-tab-versions" onclick="switchPromptSubTab('versions')"
+                                    style="background: rgba(124, 58, 237, 0.25); border: 1px solid #7c3aed; color: #a78bfa; border-radius: 8px; padding: 0.55rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; outline: none; transition: all 0.2s ease;">
                                     <i data-lucide="history" style="width: 16px; height: 16px;"></i>
                                     <span>Versions</span>
                                 </button>
-                                <button class="prompt-inner-tab-btn" data-prompt-tab="experiment">
+                                <button class="prompt-inner-tab-btn" id="btn-prompt-tab-experiment" onclick="switchPromptSubTab('experiment')"
+                                    style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; border-radius: 8px; padding: 0.55rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; outline: none; transition: all 0.2s ease;">
                                     <i data-lucide="split" style="width: 16px; height: 16px;"></i>
                                     <span>A/B Experiment</span>
                                 </button>
-                                <button class="prompt-inner-tab-btn" data-prompt-tab="eval">
+                                <button class="prompt-inner-tab-btn" id="btn-prompt-tab-eval" onclick="switchPromptSubTab('eval')"
+                                    style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; border-radius: 8px; padding: 0.55rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; outline: none; transition: all 0.2s ease;">
                                     <i data-lucide="bar-chart-2" style="width: 16px; height: 16px;"></i>
                                     <span>Performance Evaluation</span>
                                 </button>
-                                <button class="prompt-inner-tab-btn" data-prompt-tab="sandbox">
+                                <button class="prompt-inner-tab-btn" id="btn-prompt-tab-sandbox" onclick="switchPromptSubTab('sandbox')"
+                                    style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); color: #94a3b8; border-radius: 8px; padding: 0.55rem 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; outline: none; transition: all 0.2s ease;">
                                     <i data-lucide="play" style="width: 16px; height: 16px;"></i>
                                     <span>Playground Sandbox</span>
                                 </button>
                             </div>
 
                             <!-- Inner Tab 1: Versions List & Add Form -->
-                            <div id="prompt-inner-tab-versions" class="prompt-inner-tab-content active">
+                            <div id="prompt-inner-tab-versions" class="prompt-inner-tab-content active" style="display: block;">
                                 <div class="table-card">
                                     <div class="table-header">
                                         <h3>Version History</h3>
@@ -1194,7 +1198,7 @@
                             </div>
 
                             <!-- Inner Tab 2: A/B Testing Config -->
-                            <div id="prompt-inner-tab-experiment" class="prompt-inner-tab-content">
+                            <div id="prompt-inner-tab-experiment" class="prompt-inner-tab-content" style="display: none;">
                                 <div class="table-card" style="padding: 1.25rem;">
                                     <h3
                                         style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #f8fafc;">
@@ -1245,7 +1249,7 @@
                             </div>
 
                             <!-- Inner Tab 3: Evaluation Metrics comparison -->
-                            <div id="prompt-inner-tab-eval" class="prompt-inner-tab-content">
+                            <div id="prompt-inner-tab-eval" class="prompt-inner-tab-content" style="display: none;">
                                 <div class="table-card">
                                     <div class="table-header">
                                         <h3>Version Performance Matrix</h3>
@@ -1281,7 +1285,7 @@
                             </div>
 
                             <!-- Inner Tab 4: Sandbox Playground -->
-                            <div id="prompt-inner-tab-sandbox" class="prompt-inner-tab-content">
+                            <div id="prompt-inner-tab-sandbox" class="prompt-inner-tab-content" style="display: none;">
                                 <div class="sandbox-grid">
                                     <!-- Left inputs & Preview -->
                                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -1962,7 +1966,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=6"></script>
 </body>
 
 </html>
