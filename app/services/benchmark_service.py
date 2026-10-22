@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_MODEL_TARGETS = [
     {"provider": "gemini", "model": "gemini-2.5-flash"},
     {"provider": "openai", "model": "gpt-4o-mini"},
-    {"provider": "groq", "model": "llama-3.3-70b-versatile"},
+    {"provider": "groq", "model": "qwen/qwen3.8-27b"},
     {"provider": "deepseek", "model": "deepseek-chat"}
 ]
 
