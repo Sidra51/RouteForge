@@ -1526,22 +1526,72 @@ function appendChatMessage(sender, text, isTyping = false, metadata = null) {
     
     const avatarIcon = sender === 'user' ? 'user' : 'bot';
     
-    // Parse simple markdown block formatting
-    let formattedText = escapeHtml(text)
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/\n/g, '<br>');
+    // Parse rich markdown (headings, tables, lists, code blocks, bold, etc.)
+    let formattedHtml = '';
+    if (typeof marked !== 'undefined' && marked.parse) {
+        try {
+            marked.setOptions({ breaks: true, gfm: true });
+            formattedHtml = marked.parse(text);
+        } catch (e) {
+            console.warn('Marked.js error, falling back to built-in parser:', e);
+        }
+    }
+    
+    // Built-in standalone fallback markdown parser (guarantees tables and headings render)
+    if (!formattedHtml) {
+        const lines = text.split('\n');
+        let inTable = false;
+        let out = [];
 
-    // Handle fenced code blocks
-    if (formattedText.includes('```')) {
-        formattedText = formattedText.replace(/```(.*?)```/gs, '<pre><code>$1</code></pre>');
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            
+            // Markdown table row
+            if (line.startsWith('|') && line.endsWith('|')) {
+                const cells = line.split('|').slice(1, -1).map(c => c.trim());
+                // Separator row (e.g. |---|---|)
+                if (cells.every(c => /^:?-+:?$/.test(c))) {
+                    continue;
+                }
+                if (!inTable) {
+                    inTable = true;
+                    out.push('<table><thead><tr>' + cells.map(c => `<th>${escapeHtml(c)}</th>`).join('') + '</tr></thead><tbody>');
+                } else {
+                    out.push('<tr>' + cells.map(c => `<td>${escapeHtml(c)}</td>`).join('') + '</tr>');
+                }
+                continue;
+            } else if (inTable) {
+                inTable = false;
+                out.push('</tbody></table>');
+            }
+
+            // Headings
+            if (line.startsWith('### ')) {
+                out.push(`<h3>${escapeHtml(line.slice(4))}</h3>`);
+            } else if (line.startsWith('## ')) {
+                out.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
+            } else if (line.startsWith('# ')) {
+                out.push(`<h1>${escapeHtml(line.slice(2))}</h1>`);
+            } else if (line.startsWith('> ')) {
+                out.push(`<blockquote>${escapeHtml(line.slice(2))}</blockquote>`);
+            } else if (line.startsWith('- ') || line.startsWith('* ')) {
+                out.push(`<li>${escapeHtml(line.slice(2))}</li>`);
+            } else if (line) {
+                out.push(`<p>${escapeHtml(line)}</p>`);
+            }
+        }
+        if (inTable) out.push('</tbody></table>');
+
+        formattedHtml = out.join('\n')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>');
     }
 
     msg.innerHTML = `
         <div class="message-avatar"><i data-lucide="${avatarIcon}"></i></div>
-        <div class="message-content">
-            <p>${formattedText}</p>
+        <div class="message-content markdown-body">
+            ${formattedHtml}
             ${metadata ? `
                 <div class="msg-metadata">
                     ${metadata.provider ? `<span><i data-lucide="cpu" style="width:12px;height:12px;"></i> ${metadata.provider} (${metadata.model})</span>` : ''}
