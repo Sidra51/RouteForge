@@ -1421,14 +1421,11 @@ async function handlePlaygroundChatSubmit(e) {
     const maxTokens = parseInt(elements.playgroundMaxTokens.value, 10);
 
     if (!prompt) return;
-    
-    if (!keyId) {
-        showToast('Configuration Error', 'Please select an authentication API key.', 'error');
-        return;
-    }
+    // Determine bearer token: use raw gw_live_ key if valid, otherwise fallback to session accessToken
+    const authBearer = (rawKey && rawKey.startsWith('gw_live_')) ? rawKey : state.accessToken;
 
-    if (!rawKey) {
-        showToast('Authentication Error', 'Please paste the raw API Key value (gw_live_...) corresponding to the selected key prefix.', 'error');
+    if (!authBearer) {
+        showToast('Authentication Error', 'Please log in or provide a valid gw_live_... API key.', 'error');
         return;
     }
 
@@ -1468,7 +1465,7 @@ async function handlePlaygroundChatSubmit(e) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${rawKey}`
+                'Authorization': `Bearer ${authBearer}`
             },
             body: JSON.stringify(payload)
         });
